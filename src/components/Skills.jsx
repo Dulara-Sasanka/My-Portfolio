@@ -4,25 +4,25 @@ import mongoDb from '../assets/mongoDb.png'
 import node from '../assets/node-js.png'
 import php from '../assets/php.png'
 import react from '../assets/react.svg'
-import vite from '../assets/vite.jpeg'
+import vite from '../assets/vite.jpg'
 import vue from '../assets/vue.png'
 import tailwind from '../assets/tailwind.png'
-import arduino from '../assets/arduino.png'
+import arduino from '../assets/arduino-1.svg'
 import sql from '../assets/sql.png'
 
 const Skills = ({ darkMode }) => {
     const skills = [
         {name: 'Laravel', icon: laravel, level: 95, color: 'from-orange-500 to-amber-500'},
         {name: 'Framer-Motion', icon: framer, level: 90, color: 'from-red-500 to-indigo-500'},
-        {name: 'MongoDB', icon: mongoDb, level: 85, color: 'from-gray-500 to-emerald-500'},
-        {name: 'Node-js', icon: node, level: 80, color: 'from-green-500 to-emerald-500'},
+        {name: 'MongoDB', icon: mongoDb, level: 85, color: 'from-gray-500 to-green-500'},
+        {name: 'Node-js', icon: node, level: 80, color: 'from-green-500 to-gray-800'},
         {name: 'PHP', icon: php, level: 95, color: 'from-blue-500 to-indigo-500'},
         {name: 'React', icon: react, level: 93, color: 'from-white to-cyan-500'},
-        {name: 'Vite', icon: vite, level: 95, color: 'from-cyan-500 to-blue-500'},
+        {name: 'Vite', icon: vite, level: 95, color: 'from-yellow-500 to-indigo-500'},
         {name: 'Vue', icon: vue, level: 83, color: 'from-emerald-500 to-gray-500'},
         {name: 'TailwindCSS', icon: tailwind, level: 94, color: 'from-cyan-500 to-white'},
         {name: 'Arduino', icon: arduino, level: 70, color: 'from-teal-500 to-cyan-500'},
-        {name: 'MySql', icon: sql, level: 96, color: 'from-blue-500 to-cyan-500'}
+        {name: 'MySql', icon: sql, level: 96, color: 'from-orange-500 to-blue-500'}
     ];
     return (
         <section id="skills"

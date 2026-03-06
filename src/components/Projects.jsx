@@ -11,14 +11,17 @@ const Projects = ({ darkMode }) => {
             title: 'Restaurant Management System',
             desc: 'A web-based system for managing restaurant operations including orders, menu items, billing, inventory, and staff management.',
             image: project1,
-            tags: ['Laravel', 'PHP', 'MySql']
+            tags: ['Laravel', 'PHP', 'MySql'],
+            codeLink: 'https://github.com/Dulara-Sasanka/Laravel.git'
+
         },
         {
             id: 2,
             title: 'POS System (Group)',
             desc: 'A Point of Sale system designed to handle sales transactions, generate invoices, manage products, and track daily revenue efficiently.',
             image: project2,
-            tags: ['Laravel', 'PHP', 'MySql']
+            tags: ['Laravel', 'PHP', 'MySql'],
+            codeLink: 'https://github.com/tharaka-prasad/point-of-sales.git'
             
         },
         {
@@ -26,7 +29,8 @@ const Projects = ({ darkMode }) => {
             title: 'Task Management System',
             desc: 'A full-stack task management application that allows users to create, assign, track, and manage tasks with real-time updates.',
             image: project3,
-            tags: ['Raect', 'Node.js', 'MongoDB']
+            tags: ['Raect', 'Node.js', 'MongoDB'],
+            codeLink: 'https://github.com/Dulara-Sasanka/ekrain-taskmanager-system.git'
         },
     ]
     return ( 
@@ -115,7 +119,9 @@ const Projects = ({ darkMode }) => {
                                 </div>
                                 <div className='flex gap-2'>
                                     <a 
-                                    href="#"
+                                    href={project.codeLink}
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
                                     style={{
                                         backgroundColor: darkMode ? '#374151' : '#f3f4f6',
                                         color: darkMode ? 'white' : '#374151'
