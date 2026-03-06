@@ -1,132 +1,93 @@
 import emailjs from '@emailjs/browser'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import call from '../assets/call-1.png'
 
 const Contact = ({ darkMode }) => {
+  const form = useRef()
+  const [status, setStatus] = useState('') // '' | 'success' | 'error'
 
-const form = useRef()
-
-const sendEmail = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault()
 
     emailjs.sendForm(
-        "service_eg7b2io",
-        "template_xov9oer",
-        form.current,
-        "79CKBjLZh0mYBaZe9"
+      "service_eg7b2io",
+      "template_xov9oer",
+      form.current,
+      "79CKBjLZh0mYBaZe9"
     ).then(
-        () => {
-            alert("Message sent successfully ✅")
-        },
-        () => {
-            alert("Failed to send message ❌")
-        }
+      () => {
+        setStatus('success')
+        e.target.reset()
+        setTimeout(() => setStatus(''), 5000) // remove message after 5 seconds
+      },
+      () => {
+        setStatus('error')
+        setTimeout(() => setStatus(''), 5000)
+      }
     )
+  }
 
-    e.target.reset()
-}
+  const inputBg = darkMode ? 'bg-gray-700 text-white border-gray-500' : 'bg-orange-100 text-gray-900 border-gray-300'
 
-return (
-<section
-id='contact'
-style={{
-backgroundColor: darkMode ? '#111827' : '#f9fafb'
-}}
-className="py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden"
->
+  return (
+    <section id='contact' className={`${darkMode ? 'bg-gray-900' : 'bg-gray-50'} py-16 sm:py-20`}>
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className={`text-3xl sm:text-4xl font-bold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+            Get in <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-amber-500">Touch</span>
+          </h2>
+          <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} max-w-xl mx-auto`}>
+            Send me a message and I’ll get back to you as soon as possible.
+          </p>
+        </div>
 
-<div className="container mx-auto px-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div className='flex justify-center'>
+            <img src={call} alt="Contact" className='w-full max-w-sm' />
+          </div>
 
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+          <form
+            ref={form}
+            onSubmit={sendEmail}
+            className={`p-6 sm:p-8 rounded-xl shadow-lg border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <input type='text' name='first_name' placeholder='First Name'
+                className={`w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition ${inputBg}`} required />
+              <input type='text' name='last_name' placeholder='Last Name'
+                className={`w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition ${inputBg}`} required />
+            </div>
 
-<div className='flex justify-center'>
-<img src={call} alt="Contact" className='w-full max-w-sm'/>
-</div>
+            <input type='email' name='email' placeholder='Email Address'
+              className={`w-full px-4 py-2 rounded-lg border mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition ${inputBg}`} required />
 
-<form
-ref={form}
-onSubmit={sendEmail}
-style={{
-                        background: darkMode
-                        ? 'linear-gradient(to right, #1f2937, #111827)'
-                        : 'linear-gradient(to right, #ffffff, #f9fafb)',
-                        borderColor: darkMode ? '#374151' : '#e5e7eb'
-                    }}
-                    className='rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 border shadow-lg order-1 lg:order-2'
-                    data-aos='fade-left'
-                    data-aos-delay='300'>
-                        <div className='grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4'>
-                            <input
-                            type='text'
-                            name='first_name'
-                            placeholder='First Name'
-                            style={{
-                                backgroundColor: darkMode ? '#374151' : '#faede3',
-                                borderColor: darkMode ? '#4b5563' : '#d1d5db',
-                                color: darkMode ? 'white' : '#1f2937'
-                            }} 
-                            className='w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-sm sm:text-base focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all' required/>
+            <input type='tel' name='phone' placeholder='Phone Number'
+              className={`w-full px-4 py-2 rounded-lg border mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition ${inputBg}`} required />
 
-                            <input
-                            type='text'
-                            name='last_name'
-                            placeholder='Last Name'
-                            style={{
-                                backgroundColor: darkMode ? '#374151' : '#faede3',
-                                borderColor: darkMode ? '#4b5563' : '#d1d5db',
-                                color: darkMode ? 'white' : '#1f2937'
-                            }} 
-                            className='w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-sm sm:text-base focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all' required/>
-                            </div>
+            <textarea name='message' rows='5' placeholder='Your Message'
+              className={`w-full px-4 py-2 rounded-lg border mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition resize-none ${inputBg}`} required />
 
-                            <input
-                            type='email'
-                            name='email'
-                            placeholder='Email Address'
-                            style={{
-                                backgroundColor: darkMode ? '#374151' : '#faede3',
-                                borderColor: darkMode ? '#4b5563' : '#d1d5db',
-                                color: darkMode ? 'white' : '#1f2937'
-                            }} 
-                            className='w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-sm sm:text-base focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all mb-3 sm:mb-4' required/>
+            <button type='submit'
+              className='w-full py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-orange-500/25 hover:scale-105 transition-all'>
+              Send Message
+            </button>
 
-                            <input
-                            type='tel'
-                            name='phone'
-                            placeholder='Phone Number'
-                            style={{
-                                backgroundColor: darkMode ? '#374151' : '#faede3',
-                                borderColor: darkMode ? '#4b5563' : '#d1d5db',
-                                color: darkMode ? 'white' : '#1f2937'
-                            }} 
-                            className='w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-sm sm:text-base focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all mb-3 sm:mb-4' required/>
-
-                            <textarea
-                            name='message'
-                            rows='4'
-                            placeholder='Your Message'
-                            style={{
-                                backgroundColor: darkMode ? '#374151' : '#faede3',
-                                borderColor: darkMode ? '#4b5563' : '#d1d5db',
-                                color: darkMode ? 'white' : '#1f2937'
-                            }} 
-                            className='w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-sm sm:text-base focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all mb-4 sm:mb-6 resize-none' required/>
-
-                            <button
-                            type='submit'
-                            style={{
-                                background: 'linear-gradient(to right, #f97316, #f59e0b)'
-                            }}
-                            className='w-full py-2 sm:py-3 text-white font-semibold rounded-lg text-sm sm:text-base hover:shadow-lg hover:shadow-orange-500/25 hover:scale-[1.02] transition-all'>
-                                Send Message
-                            </button>
-
-</form>
-
-</div>
-</div>
-</section>
-)
+            {/* Inline success/error message */}
+            {status === 'success' && (
+              <p className="mt-4 text-green-500 font-medium text-center">
+                ✅ Message sent successfully!
+              </p>
+            )}
+            {status === 'error' && (
+              <p className="mt-4 text-red-500 font-medium text-center">
+                ❌ Failed to send message. Please try again.
+              </p>
+            )}
+          </form>
+        </div>
+      </div>
+    </section>
+  )
 }
 
 export default Contact
