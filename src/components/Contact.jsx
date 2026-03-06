@@ -124,7 +124,7 @@ const Contact = ({ darkMode }) => {
 
             <div className="mb-4">
               <ReCAPTCHA
-                sitekey="6LdLsIEsAAAAACJCgLSxGaEU0ziO30TR8sxNXx4t"
+                sitekey="6LdLsIEsAAAAAAI430qrIU0mZT1DmE-5ogK4ixkc"
                 ref={recaptchaRef}
               />
             </div>
