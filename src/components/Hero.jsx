@@ -50,7 +50,7 @@ const Hero = ({ darkMode }) => {
                                 <img
                                     src={instagram}
                                     alt="instagram"
-                                    className={`w-8 h-8 sm:w-20 sm:h-20 object-contain ${
+                                    className={`w-14 h-14 sm:w-20 sm:h-20 object-contain ${
                                             darkMode ? "" : "filter brightness-75"
                                     }`}
                                 />
@@ -65,7 +65,7 @@ const Hero = ({ darkMode }) => {
                                 <img
                                     src={facebook}
                                     alt="facebook"
-                                    className={`w-8 h-8 sm:w-20 sm:h-20 object-contain ${
+                                    className={`w-14 h-14 sm:w-20 sm:h-20 object-contain ${
                                             darkMode ? "" : "filter brightness-75"
                                     }`}
                                 />
@@ -80,7 +80,7 @@ const Hero = ({ darkMode }) => {
                                 <img
                                     src={tiktok}
                                     alt="tiktok"
-                                    className={`w-8 h-8 sm:w-20 sm:h-20 object-contain ${
+                                    className={`w-14 h-14 sm:w-20 sm:h-20 object-contain ${
                                             darkMode ? "" : "filter brightness-75"
                                     }`}
                                 />
@@ -95,7 +95,7 @@ const Hero = ({ darkMode }) => {
                                 <img
                                     src={youtube}
                                     alt="youtube"
-                                    className={`w-8 h-8 sm:w-20 sm:h-20 object-contain ${
+                                    className={`w-14 h-14 sm:w-20 sm:h-20 object-contain ${
                                             darkMode ? "" : "filter brightness-75"
                                     }`}
                                 />
@@ -134,7 +134,7 @@ const Hero = ({ darkMode }) => {
                     </div>
                     {/* Image */}
                     <div
-                    className='lg:w-1/2 w-full max-w-md lg:max-w-lg mt-8 lg:mt-0 flex-justify-center'
+                    className='lg:w-1/2 w-full max-w-md lg:max-w-lg mt-8 lg:mt-0 flex justify-center'
                     data-aos='fade-left'
                     data-aos-delay='400'
                     >
